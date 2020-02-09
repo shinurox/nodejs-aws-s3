@@ -1,0 +1,149 @@
+<html>
+
+<head>
+    <title>Theater Intelligence</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-10 offset-md-1">
+                <form id="fileUploadForm" enctype="multipart/form-data" onsubmit="return false;">
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile" name="dataFile" aria-describedby="inputGroupFileAddon">
+                            <label id="inputGroupFileLabel" class="custom-file-label" for="inputGroupFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="submit" id="inputGroupFileAddon">Upload</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-10 offset-md-1">
+                <table class="table border" id="file-table">
+                    <thead class="">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Filename</th>
+                            <th scope="col" class="text-right p-1"><button id="btn-delete-all" class="btn btn-sm mr-2"><img src="data:image/png;base64,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" height="25" width="25"></button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        loadTable();
+
+        $('#inputGroupFile').on('change', function(){
+            $('#inputGroupFileLabel').text($(this).val());
+        });
+
+        $('#fileUploadForm').on('submit', function () {
+            $.ajax({
+                url: '/createObject',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                data: new FormData(this),
+                success: function (responseData) {
+                    alert('Uploaded file successfully!');
+                    $('#inputGroupFileLabel').text('Choose file');
+                    loadTable();
+                }
+            });
+        });
+
+        $('#btn-reload').on('click', function () {
+            loadTable();
+        });
+
+        $('#btn-delete-all').on('click', function () {
+            const keys = [];
+            $('.btn-delete').each(function () {
+                keys.push({
+                    Key: $(this).attr('data-key')
+                });
+            });
+            let requestData = {
+                keys: keys
+            };
+            $.ajax({
+                url: '/deleteAllObject',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(requestData),
+                success: function (responseData) {
+                    alert('Deleted objects successfully!');
+                    loadTable();
+                }
+            });
+        });
+
+        $('body').on('click', '.btn-delete', function () {
+            const key = $(this).attr('data-key');
+            let requestData = {
+                key: key
+            };
+            $.ajax({
+                url: '/deleteObject',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(requestData),
+                success: function (responseData) {
+                    alert('Deleted object successfully!');
+                    loadTable();
+                }
+            });
+        });
+    });
+
+    function loadTable() {
+        $('#file-table tbody').empty();
+        $.ajax({
+            url: '/getObjects',
+            type: 'GET',
+            success: function (responseData) {
+                let index = 1;
+                let folderCount = 0;
+                for (const item of responseData) {
+                    const filename = item.Key.split('/')[1];
+                    const foldername = item.Key.split('/')[0];
+                    if (filename) {
+                        let rowMarkup = `
+                        <tr>
+                            <td>${index}</th>
+                                <td class="text-primary"><a href="https://shinu-test-bucket-1.s3.ap-south-1.amazonaws.com/${item.Key}" target="_blank">[ ${foldername} ] / ${filename}</a></td>
+                                <td class="text-right">
+                                    <button class="btn btn-sm btn-delete" data-key="${item.Key}"><img src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-delete-icon.png" height="25" width="25"></button>
+                                    </td>
+                                    </tr>`;
+                        $('#file-table tbody').append(rowMarkup);
+                        index++;
+                    } else {
+                        folderCount++;
+                    }
+                }
+                if (responseData.length == 0 || folderCount == responseData.length) {
+                    $('#file-table tbody').append(`<tr><td colspan="3" class="text-center">No data to display.</td></tr>`);
+                }
+            }
+        });
+    }
+</script>
+
+</html>
