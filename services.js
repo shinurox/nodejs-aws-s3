@@ -2,7 +2,7 @@ const AWS = require('aws-sdk');
 const fs = require('fs');
 const path = require('path');
 
-const bucketName = 'shinu-test-bucket-1'; // AWS Bucket name.
+const bucketName = ''; // AWS Bucket name.
 
 // configuring the AWS environment.
 AWS.config.update({
